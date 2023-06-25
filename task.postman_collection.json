@@ -1,0 +1,367 @@
+{
+	"info": {
+		"_postman_id": "a6f18165-fbdc-4090-ae39-84848c9bb696",
+		"name": "task",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20324879"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n// admin creation\r\n    // \"name\":\"moni\", \"email\":\"admin724@gmail.com\", \"phone\":1234567890, \"password\":\"123456789\",\"isAdmin\":true\r\n\r\n\r\n    //normal user creation\r\n    \"name\":\"amrita\", \"email\":\"amrita724@gmail.com\", \"phone\":1234567890, \"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}user/createUser",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								"createUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loginUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // admin login\r\n    // \"password\":\"123456789\",\"email\":\"admin724@gmail.com\"\r\n\r\n    // normal user login\r\n//     \"email\":\"moni724@gmail.com\",\r\n// \"password\":\"123456789\"\r\n\r\n// normal user\r\n\"email\":\"amrita724@gmail.com\",\r\n\"password\":\"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}user/loginUser",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								"loginUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "viewProfile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{normalUserToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}user/viewProfile",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								"viewProfile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}user/getAllUsers",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateProfile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"moni\", \"email\":\"admin724@gmail.com\", \"phone\":1234567890, \"password\":\"123456789\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}user/updateProfile",
+							"host": [
+								"{{baseUrl}}user"
+							],
+							"path": [
+								"updateProfile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "createPost",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DR\":100, \"PA\":20, \"DA\":\"50\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}posts/createPost",
+							"host": [
+								"{{baseUrl}}posts"
+							],
+							"path": [
+								"createPost"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePost",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"DR\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}posts/updatePost?id=649852f652d30ed6388fc111",
+							"host": [
+								"{{baseUrl}}posts"
+							],
+							"path": [
+								"updatePost"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "649852f652d30ed6388fc111"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePosts",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}posts/deletePosts?id=64986c6152d30ed6388fc130",
+							"host": [
+								"{{baseUrl}}posts"
+							],
+							"path": [
+								"deletePosts"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "64986c6152d30ed6388fc130"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPosts",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}posts/getPosts",
+							"host": [
+								"{{baseUrl}}posts"
+							],
+							"path": [
+								"getPosts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "approveDeleteRequest",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}posts/approveDeleteRequest?userId=6498531852d30ed6388fc114",
+							"host": [
+								"{{baseUrl}}posts"
+							],
+							"path": [
+								"approveDeleteRequest"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "6498531852d30ed6388fc114"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllDeleteRequest",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{adminToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}posts/getAllDeleteRequest",
+							"host": [
+								"{{baseUrl}}posts"
+							],
+							"path": [
+								"getAllDeleteRequest"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/api/",
+			"type": "string"
+		},
+		{
+			"key": "adminToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTg1MWVkNTJkMzBlZDYzODhmYzEwYiIsImVtYWlsIjoiYWRtaW43MjRAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaGF2ZURlbGV0ZVJpZ2h0cyI6dHJ1ZSwiaWF0IjoxNjg3NzA0MTE5LCJleHAiOjE2ODgzMDg5MTl9.JVHs7r1m-P4mu_xeNBnZkMnof0B8mzLhCIkYfxmrXXU",
+			"type": "string"
+		},
+		{
+			"key": "normalUserToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTg1MzE4NTJkMzBlZDYzODhmYzExNCIsImVtYWlsIjoibW9uaTcyNEBnbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaGF2ZURlbGV0ZVJpZ2h0cyI6ZmFsc2UsImlhdCI6MTY4NzcwNDQwNiwiZXhwIjoxNjg4MzA5MjA2fQ.mjp96XuT74X2AlcvJfswiUy-MeTBab1LkU7HLZHhqCw",
+			"type": "string"
+		}
+	]
+}
